@@ -1,0 +1,811 @@
+
+/*---------------------*/
+/* CSS for TRAVEL GAME */
+/*---------------------*/
+
+.travelGameStartGameButton{
+	position:absolute;
+	left: 34px;
+	bottom: 60px;
+	padding: 8px 16px;
+  font-size: 20px;
+	font-weight: bold;
+  background-color: white;
+  color:#8BAB3E;
+  border: 3px solid #8BAB3E;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/*Passport stuff*/
+.passport-container {
+  position: relative;
+  width: 520px;
+  height: 370px;
+  padding: 30px;
+  background-color: white;
+	border-radius: 16px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.passport-photo img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.passport-info {
+  position: absolute;
+  top: 10px;
+  left: 250px;
+}
+
+.passport-info h1 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.passport-name-field {
+  margin-top: 10px;
+	font-family: "Lato", sans-serif;
+  color: #555;
+  font-size: 18px;
+	width: 200px;
+}
+
+.passport-name-field label {
+  display: block;
+  margin-bottom: 0px;
+  font-weight: bold;
+}
+
+.passport-name-field input {
+  width: 100%;
+  padding: 8px;
+}
+
+.passport-logo {
+  position: absolute;
+  bottom: 2px;
+  right: 70px;
+}
+
+.passport-logo img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.passport-arrow-buttons {
+  display: flex;
+  margin-top: 5px;
+	margin-left: 23px;
+	font-weight:bold;
+}
+
+.passport-arrow-button-left,
+.passport-arrow-button-right {
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+	font-family: "Lato", sans-serif;
+  color: #555;
+	font-weight: bold;
+	margin-left: 5px;
+	margin-right: 5px;
+	
+}
+
+.passport-arrow-button-left:hover,
+.passport-arrow-button-right:hover {
+  background-color: #ddd;
+}
+/*--------------------------*/
+/*game bar*/
+/*--------------------------*/
+.game-fixed-bar {
+	display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #4CAF50;
+  color: #fff;
+	height: 100px;
+  padding: 10px;
+	/*margin-bottom: 10px;*/
+	border-top-left-radius:8px;
+	border-top-right-radius:8px;
+}
+#avatarInBar{
+	width: 70px;
+  height: 70px;
+	margin-right: 15px;
+	margin-left: 10px;
+}
+#playerNameInBar{
+	position: relative;
+	font-size: 28px;
+	font-family: "Lato", sans-serif;
+}
+/*these are the COLLECTED souvenirs in the game bar. initially not visible, but once collected they are visible*/
+#souvenir0InBar{
+	position: absolute;
+	right: 38px;
+	top: 32px;
+	font-size: 24px;
+	width:60px;
+	display:none;
+}
+#souvenir1InBar{
+	position: absolute;
+	right: 96px;
+	top: 28px;
+	font-size: 24px;
+	width:60px;
+	display:none;
+}
+#souvenir2InBar{
+	position: absolute;
+	right: 154px;
+	top: 25px;
+	font-size: 24px;
+	width:40px;
+	display:none;
+}
+#souvenir3InBar{
+	position: absolute;
+	right: 212px;
+	top: 28px;
+	font-size: 24px;
+	width:40px;
+	display:none;
+}
+#souvenir4InBar{
+	position: absolute;
+	right: 267px;
+	top: 25px;
+	font-size: 24px;
+	width:55px;
+	display:none;
+}
+#souvenir5InBar{
+	position: absolute;
+	right: 328px;
+	top: 28px;
+	font-size: 24px;
+	width:40px;
+	display:none;
+}
+#souvenir6InBar{
+	position: absolute;
+	right: 386px;
+	top: 35px;
+	font-size: 24px;
+	width:45px;
+	display:none;
+}
+#souvenir7InBar{
+	position: absolute;
+	right: 440px;
+	top: 25px;
+	font-size: 24px;
+	width:55px;
+	display:none;
+}
+/*bottom bar*/
+.game-fixed-bar-bottom{
+	display: flex;
+  align-items: center;
+	justify-content: flex-start;
+  width: 100%;
+  background-color: #4CAF50;
+  color: #fff;
+	height: 80px;
+  padding: 10px;
+	/*margin-top: 10px;*/
+	border-bottom-left-radius:8px;
+	border-bottom-right-radius:8px;
+}
+
+.bottomBarBackButton{
+	position:absolute;
+	left:22px;
+	bottom:23px;
+	padding: 6px 12px;
+  font-size: 19px;
+	font-weight: bold;
+  background-color: #fff;
+  color: #4CAF50;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+	transition: 0.2s;
+}
+.bottomBarBackButton a{
+	text-decoration:none;
+	color:#4CAF50;
+}
+.bottomBarBackButton:hover{
+	box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+
+/*displays the page title to the user in the bottom bar, like "Main menu"*/
+.locationDisplayBottomBar{
+	font-size: 24px;
+	color:white;
+	font-family: "Lato", sans-serif;
+	margin-left: auto; 
+  margin-right: auto;
+}
+
+.pointsDisplayAndText{
+	position: absolute;
+  bottom: 17px;
+  right: 80px;
+	font-size: 24px;
+	
+	color:white;
+	font-family: "Lato", sans-serif;
+}
+
+/*--------------------------*/
+/*SOUVENIRS IN THE OVERWORLD*/
+/*--------------------------*/
+#souvenir0{
+	width:65px;
+	
+	animation: bounce 0.7s infinite alternate;
+	cursor:pointer;
+}
+/*golden football in p1*/
+#souvenir1{
+	width:65px;
+	position: absolute;
+  bottom: 10%;
+  right: 7%;
+	animation: bounce 0.6s infinite alternate;
+	cursor:pointer;
+}
+/*statue in p1 overview*/
+#souvenir2{
+	width:40px;
+	position: absolute;
+  bottom: 12%;
+  left: 7%;
+	cursor:pointer;
+}
+/*beach ball in p1 c3*/
+#souvenir3{
+	width:36px;
+	position: absolute;
+  bottom: 17%;
+  right: 11%;
+	cursor:pointer;
+	animation: bounce 0.6s infinite alternate;
+}
+/*colored mug in p2*/
+#souvenir4{
+	width:70px;
+	position: absolute;
+  bottom: 38%;
+  right: 13%;
+	cursor:pointer;
+}
+/*rose in p2*/
+#souvenir5{
+	width:50px;
+	position: absolute;
+  bottom: 41%;
+  left: 48%;
+	cursor:pointer;
+}
+/*vhs in p3*/
+#souvenir6{
+	width:60px;
+	position: absolute;
+  bottom: 25%;
+  right: 20%;
+	cursor:pointer;
+}
+/*hidden teddy. have to check p1c5 twice before it appears.*/
+#souvenir7{
+	width:60px;
+	position: absolute;
+  bottom: 150px;
+  right: 90px;
+	cursor:pointer;
+	animation: bounce 0.8s infinite alternate;
+	display:none;
+}
+/*bounce animation for souvenirs in overworld*/
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-6px);
+  }
+}
+
+/* phase 1, 2, 3 rectangles overview elements in game start*/
+
+.phase-elements-content {
+  height: 320px; 
+
+	text-align:center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.phase-elements-rectangle {
+	width: calc(33.0% - 18px); /* Adjust the width as needed */
+  height: 320px;
+  padding: 20px;
+  margin-right: 9px;
+  margin-left: 9px;
+  margin-top: 25px;
+  margin-bottom: 40px;
+  display: inline-block;
+  border-radius: 8px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  background-color: rgba(255,255,255, 0.92);
+}
+
+.phase-elements-title {
+  font-size: 24px;
+  margin-top: 0;
+}
+
+.phase-elements-text {
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.phase-elements-button {
+	margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+	
+}
+
+.phase-elements-button a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.phase-elements-button:hover {
+  background-color: #45a049;
+}
+
+/*initially disabled, until phase 1 completed*/
+
+#startP1Button{
+	display:block;
+}
+#startP2Button{
+	display:none;
+}
+
+#startP3Button{
+	display:none;
+}
+
+#gameStartContentDiv{
+	text-align: center;
+	background-image: url('https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/nature-g551aa179b_1920.jpg');
+}
+#gameStartUpperTextsRect{
+	display:inline-block; 
+	margin-top:20px;
+	width: 800px;
+	padding-top: 15px; 
+	padding-bottom:20px; 
+	padding-left:80px; 
+	padding-right:80px; 
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  background-color: rgba(255,255,255, 0.92);
+}
+
+
+
+/*Inside phase 1, and maybe other phases in the future.
+In other words, the PHASE 1 MENU*/
+
+.phase1ChaptersDiv{
+	/*margin:auto;
+	width:98%;*/
+	height:700px;
+	background-image: url('https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/phase1background.jpg');
+	padding:20px;
+	/*outline: yellow solid 10px;*/
+}
+
+.chapters-inside-phase{
+	margin-bottom: 20px;
+	margin-left:auto;
+	margin-right:auto;
+	
+  padding: 18px;
+	border-radius: 80px;
+	width: 570px;
+	height: 115px;
+	background:rgba(255,255,255, 0.83);
+	position: relative;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+/*titles of p1 chapters*/
+.phase1Titles{
+	text-align:center;
+}
+
+/*these texts show 0/5 completed etc*/
+.p1ChaptersCompletedText{
+	font-size: 16px;
+	font-family: "Lato", sans-serif;
+	position: absolute;
+  right: 70px;
+  top: 43%;
+	font-weight:bold;
+}
+
+/*these aren't arrows anymore... they are the "next step" text inside phase 1*/
+.chapters-phase-arrow {
+	visibility:hidden;
+	font-size: 16px;
+	font-family: "Lato", sans-serif;
+ position: absolute;
+  left: 70px;
+  top: 63%;
+  transform: translateY(-50%);
+  color: green;
+  animation: chaptersArrowAnimation 5.2s infinite;
+}
+
+@keyframes chaptersArrowAnimation {
+  0% {
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    transform: translateY(-50%) scale(1.2);
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+.phase-menu-button-container{
+	display: flex;
+  align-items: center;
+}
+
+.phase-menu-button-container button{
+	position:absolute;
+	top:37%;
+	left:44.5%;
+  
+	margin-top: 15px;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.phase-menu-button-container button:hover{
+  background-color: #45a049;
+}
+.phase-menu-button-container button a{
+	text-decoration:none;
+	color:white;
+}
+
+.phase1-5images-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.phase1-5images-imagediv {
+  flex: 0 0 calc(20% - 10px);
+  box-sizing: border-box;
+  padding: 0;
+  margin: 5px;
+  text-align: center;
+  position: relative;
+}
+
+.phase1-5images-imagediv img {
+  display: block;
+  margin: 0 auto;
+  border-style: outset;
+  border-width: 6px;
+  cursor: pointer;
+  width: 100%;
+  height: auto;
+}
+
+.phase1-5images-imagediv h5 {
+  margin: 0;
+}
+
+.phase1-5images-imagediv img:hover{
+  border-color:gray;
+}
+
+.phase1-5images-imagediv h5 {
+  margin: 0;
+  
+}
+
+.phase1-content-box{
+	/*Border can help with developing*/
+	/*border: 1px solid black;*/
+	margin-top:5px;
+	margin-left:50px;
+	margin-right:50px;
+	margin-bottom:20px;
+	height:450px;
+	border-radius: 16px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+	background-color: rgba(255,255,255, 0.78);
+}
+
+.phase1-content-box h5{
+	margin-left: 20px;
+	margin-right: 20px;
+	padding-top:20px;
+}
+.phase1-content-box p{
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top:10px;
+}
+
+#p1c1BackgroundImageDiv{
+	background-image: url("https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/paper-ga6c7f25c1_1920.jpg");
+	padding-bottom:10px;
+}
+#p1c2BackgroundImageDiv{
+	background-image: url("https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/ocean-gcc1963940_1920.jpg");
+	padding-bottom:10px;
+}
+#p1c3BackgroundImageDiv{
+	background-image: url("https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/amazing-gae79c3c9c_1920.jpg");
+	padding-bottom:10px;
+}
+#p1c4BackgroundImageDiv{
+	background-image: url("https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/desert-g06c7a9496_1920.jpg");
+	padding-bottom:10px;
+}
+#p1c5BackgroundImageDiv{
+	background-image: url("https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/korea-ge3076ff89_1920.jpg");
+	padding-bottom:10px;
+}
+
+/*PHASE 2 and 3*/
+/*These things are used in both phase 2 and phase 3 views*/
+/*container around the image grid to center everything, this can be removed np*/
+
+.phase2-grid-container {
+  display: flex;
+  justify-content: center;
+}
+
+#p3BackgroundImageContainer{
+	background-image: url("https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/sea-g2312a86b0_1920.jpg");
+}
+#p2BackgroundImageContainer{
+	background-image: url("https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/passenger-plane-g9b12ba9e3_1920.jpg");
+}
+
+.phase2-image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+	margin-left:5%;
+	margin-right:5%;
+}
+
+.phase2-image-grid img {
+  width: 260px;
+  border-style: outset;
+  border-width: 6px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.phase2-image-grid img:hover{
+	border-color:black;
+}
+
+/*pop-up window stuff for phase 2 of travel game. same stuff for phase 3 is below these*/
+
+ #phases-popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 9999;
+  }
+
+  #phases-popup-content {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 800px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  #phases-popup-close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  #phases-popup-close-button:hover{
+    background-color:#f5776c;
+  }
+
+
+
+/*phase 3 popup window and contents. for now these are just copies of phase 2 stuff but with 3 added to name. so make modifications to both.*/
+
+ #phases-popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 9999;
+  }
+
+  #phases-popup-content {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 800px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+
+
+/*phase 3 popup and contents, copy of phase 2 ids with 3 in name for now. can turn these into classes later or keep as is for making them different from eachother*/
+
+ #phase3-popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 9999;
+  }
+
+  #phase3-popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 800px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  #phase3-popup-close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+#phase3-popup-close-button:hover {
+    background-color:#f5776c
+  }
+
+
+/* phase 3 quiz travel game*/
+
+.p3-quiz-buttons{
+	padding: 4px 10px;
+  font-size: 16px;
+	font-weight: bold;
+  background-color: white;
+  color:#8BAB3E;
+  border: 2px solid #8BAB3E;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.p3-quiz-buttons:hover{
+	color:gray;
+}
+
+#p3-quiz-correct-answers{
+	display:none;
+}
+
+#p3-quiz-wrong-answers{
+	display:none;
+}
+
+#p3-final-button{
+	display:none;
+	margin:auto;
+	font-size: 24px;
+	margin-bottom: 50px;
+}
+
+#backgroundImageDivResultsPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/maldives-g15ea9d3db_1920.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+
+
+
+.button-link {
+		display: block;
+		font-family: "Lato", sans-serif;
+		border-radius: 10px;
+		line-height: 1.2;
+		color: #555;
+		text-decoration: none;
+		padding: 12px 20px;
+		font-size: 15px;
+		border: 2px solid transparent;
+		background-color: white;
+		transition: all 0.5s;
+		cursor: pointer;
+		text-align: center;
+		box-shadow: rgba(139, 171, 62, 0.2) 0px 2px 8px 0px;
+		font-weight: 500;
+		position: relative;
+		padding: 24px;
+    margin: 12px 0;
+		min-height: 124px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	
+	&:hover {
+		    border: 2px solid #8BAB3E;
+	}
+}

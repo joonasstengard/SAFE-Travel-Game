@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAFE Travel Game – Phase 1</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="game-fixed-bar">
+    <img id="avatarInBar" src="" alt="image" />
+    <span id="playerNameInBar">Player name.</span>
+    <img id="souvenir0InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/06/seashell.png" alt="image" />
+    <img id="souvenir1InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/souvenir1ball.png" alt="image" />
+    <img id="souvenir2InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/sculpture-gda93a00ff_1280.png" alt="image" />
+    <img id="souvenir3InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/beach-ball-g626ca7563_640.png" alt="image" />
+    <img id="souvenir4InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/mug-for-tea-gbd2ec252a_1280.png" alt="image" />
+    <img id="souvenir5InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/rose-gbf389d9a7_640.png" alt="image" />
+    <img id="souvenir6InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/vhs-gfb4e9d4cf_640.png" alt="image" />
+    <img id="souvenir7InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/teddy-g1e33543ef_640.png" alt="image" />
+  </div>
+
+  <!-- PHASE 1 CHAPTER MENU -->
+  <div class="phase1ChaptersDiv">
+
+    <div class="chapters-inside-phase">
+      <div class="chapters-phase-arrow" id="phase1-chapter1-arrow">Next step!</div>
+      <h5 class="phase1Titles">Destination knowledge</h5>
+      <div class="phase-menu-button-container">
+        <button class="p1StartChapterButtons" id="p1c1button" onclick="p1c1OnClick()">
+          <a href="phase1-chapter1.html">Start</a>
+        </button>
+        <p class="p1ChaptersCompletedText"><span id="howManyp1c1Completed"></span>/5 completed</p>
+      </div>
+    </div>
+
+    <div class="chapters-inside-phase">
+      <div class="chapters-phase-arrow" id="phase1-chapter2-arrow">Next step!</div>
+      <h5 class="phase1Titles">Important documentation and other precautions</h5>
+      <div class="phase-menu-button-container">
+        <button class="p1StartChapterButtons" id="p1c2button" onclick="p1c2OnClick()">
+          <a href="phase1-chapter2.html">Start</a>
+        </button>
+        <p class="p1ChaptersCompletedText"><span id="howManyp1c2Completed"></span>/5 completed</p>
+      </div>
+    </div>
+
+    <div class="chapters-inside-phase">
+      <div class="chapters-phase-arrow" id="phase1-chapter3-arrow">Next step!</div>
+      <h5 class="phase1Titles">Luggage, accommodation and payment methods</h5>
+      <div class="phase-menu-button-container">
+        <button class="p1StartChapterButtons" id="p1c3button" onclick="p1c3OnClick()">
+          <a href="phase1-chapter3.html">Start</a>
+        </button>
+        <p class="p1ChaptersCompletedText"><span id="howManyp1c3Completed"></span>/3 completed</p>
+      </div>
+    </div>
+
+    <div class="chapters-inside-phase">
+      <div class="chapters-phase-arrow" id="phase1-chapter4-arrow">Next step!</div>
+      <h5 class="phase1Titles">What if? (preparedness)</h5>
+      <div class="phase-menu-button-container">
+        <button class="p1StartChapterButtons" id="p1c4button" onclick="p1c4OnClick()">
+          <a href="phase1-chapter4.html">Start</a>
+        </button>
+        <p class="p1ChaptersCompletedText"><span id="howManyp1c4Completed"></span>/3 completed</p>
+      </div>
+    </div>
+
+    <div class="chapters-inside-phase">
+      <div class="chapters-phase-arrow" id="phase1-chapter5-arrow">Next step!</div>
+      <h5 class="phase1Titles">Accessibility</h5>
+      <div class="phase-menu-button-container">
+        <button class="p1StartChapterButtons" id="p1c5button" onclick="p1c5OnClick()">
+          <a href="phase1-chapter5.html">Start</a>
+        </button>
+        <p class="p1ChaptersCompletedText"><span id="howManyp1c5Completed"></span>/5 completed</p>
+      </div>
+    </div>
+
+    <!-- Collectible souvenirs -->
+    <img id="souvenir1" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/souvenir1ball.png" alt="souvenirball" onclick="collectSouvenir(1)" />
+    <img id="souvenir2" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/sculpture-gda93a00ff_1280.png" alt="souvenirstatue" onclick="collectSouvenir(2)" />
+
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div class="game-fixed-bar-bottom">
+    <p class="locationDisplayBottomBar">Preparing for SAFE travel</p>
+    <button class="bottomBarBackButton">
+      <a href="main-menu.html">← Go back</a>
+    </button>
+    <p class="pointsDisplayAndText"><span id="pointsDisplayedInBottomBar"></span> points</p>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAFE Travel Game – Phase 1 – Chapter 1</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="game-fixed-bar">
+    <img id="avatarInBar" src="" alt="image" />
+    <span id="playerNameInBar">Player name.</span>
+    <img id="souvenir0InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/06/seashell.png" alt="image" />
+    <img id="souvenir1InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/souvenir1ball.png" alt="image" />
+    <img id="souvenir2InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/sculpture-gda93a00ff_1280.png" alt="image" />
+    <img id="souvenir3InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/beach-ball-g626ca7563_640.png" alt="image" />
+    <img id="souvenir4InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/mug-for-tea-gbd2ec252a_1280.png" alt="image" />
+    <img id="souvenir5InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/rose-gbf389d9a7_640.png" alt="image" />
+    <img id="souvenir6InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/vhs-gfb4e9d4cf_640.png" alt="image" />
+    <img id="souvenir7InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/teddy-g1e33543ef_640.png" alt="image" />
+  </div>
+
+  <div id="p1c1BackgroundImageDiv">
+
+    <div class="phase1-5images-container">
+
+      <div class="phase1-5images-imagediv"> 
+        <img src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/06/safetykeys.jpg" 
+        alt="safety" onclick="changePhase1ContentText(0, 1)"/> 
+        <h5>Safety situation</h5>
+      </div>
+
+      <div class="phase1-5images-imagediv"> 
+        <img src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/06/traffic.jpg" alt="traffic" onclick="changePhase1ContentText(1, 1)"/> 
+        <h5>Traffic</h5>
+      </div>
+
+      <div class="phase1-5images-imagediv"> 
+        <img src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/06/law2.jpg" alt="laws" onclick="changePhase1ContentText(2, 1)"/> 
+        <h5>Laws & regulations</h5>
+      </div>
+
+      <div class="phase1-5images-imagediv"> 
+        <img src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/06/bird.jpg" alt="nature" onclick="changePhase1ContentText(3, 1)"/>
+        <h5>Nature & animals</h5>
+      </div>
+
+      <div class="phase1-5images-imagediv">
+        <img src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/06/church-g73fc00862_1280.jpg"
+        alt="religion" onclick="changePhase1ContentText(4, 1)"/> 
+        <h5>Culture & religion</h5>
+      </div>
+    </div>
+
+    <div class="phase1-content-box" id="phase1-content-box">
+      <h5>
+       Click on the topics above to learn more about gathering destination knowledge for a SAFE travel preparation!
+      </h5>
+    </div>
+
+  </div>
+
+  <div class="game-fixed-bar-bottom">
+    <p class="locationDisplayBottomBar">Destination knowledge</p>
+    <button class="bottomBarBackButton">
+      <a href="phase1.html">← Go back</a>
+    </button>
+    <p class="pointsDisplayAndText"><span id="pointsDisplayedInBottomBar"></span> points</p>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
+

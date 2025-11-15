@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAFE Travel Game – Phase 3</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="game-fixed-bar">
+    <img id="avatarInBar" src="" alt="image" />
+    <span id="playerNameInBar">Player name.</span>
+    <img id="souvenir0InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/06/seashell.png" alt="image" />
+    <img id="souvenir1InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/souvenir1ball.png" alt="image" />
+    <img id="souvenir2InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/sculpture-gda93a00ff_1280.png" alt="image" />
+    <img id="souvenir3InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/beach-ball-g626ca7563_640.png" alt="image" />
+    <img id="souvenir4InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/mug-for-tea-gbd2ec252a_1280.png" alt="image" />
+    <img id="souvenir5InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/rose-gbf389d9a7_640.png" alt="image" />
+    <img id="souvenir6InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/vhs-gfb4e9d4cf_640.png" alt="image" />
+    <img id="souvenir7InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/teddy-g1e33543ef_640.png" alt="image" />
+  </div>
+
+  <div id="p3BackgroundImageContainer" style="padding-top:15px; padding-bottom:10px;">
+
+    <h4 style="text-align:center;margin-bottom:10px;">Click on the images to find out more about each subject</h4>
+
+    <div class="phase2-grid-container"> 
+      <div class="phase2-image-grid">
+
+        <img src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/06/phase3food.jpg" alt="food"/>
+
+        <img src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/06/phase3hotel.jpg" alt="hotel"/>
+
+        <img src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/06/phase3map.jpg" alt="map"/>
+
+        <img src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/06/phase3shellfish.jpg" alt="shellfish"/>
+
+        <img src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/06/phase3amusementpark.jpg" alt="amusement-park"/>
+
+        <img src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/06/phase3traffictaxis.jpg" alt="taxis-traffic"/>
+
+        <img src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/06/phase3policegeneric.jpg" alt="police"/>
+
+        <img src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/positive-g52726b95e_1280.jpg" alt="happydog" id="p3c8img" style="display:none;"/>
+
+      </div>
+
+      <img id="souvenir6" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/vhs-gfb4e9d4cf_640.png" alt="-" onclick="collectSouvenir(6)"/>
+
+    </div>
+
+    <div id="phase3-popup-container">
+      <div id="phase3-popup-content">
+        <!-- Content of the pop-up window -->
+        <h5 id="phase3-popup-title" style="margin-bottom: 40px;"></h5>
+        <div id="phase3-popup-text"></div>
+        <h5 id="p3-quiz-title" style="margin-top: 20px;">Additional Element</h5>
+        <button class="p3-quiz-buttons" id="p3-quiz-button1" onclick="answerQuiz(1)">Button 1</button>
+        <button class="p3-quiz-buttons" id="p3-quiz-button2" onclick="answerQuiz(2)">Button 2</button>
+        <button class="p3-quiz-buttons" id="p3-quiz-button3" onclick="answerQuiz(3)">Button 3</button>
+        <button class="p3-quiz-buttons" id="p3-quiz-button4" onclick="answerQuiz(4)">Button 4</button>
+        <button class="p3-quiz-buttons" id="p3-quiz-button5" onclick="answerQuiz(5)">Button 5</button>
+        <button class="p3-quiz-buttons" id="phase3-popup-close-button">X</button>
+        <p id="p3-quiz-correct-answers">Correct quiz answers: <span id="p3-quiz-numberOfCorrectAnswers">0</span></p>
+        <p id="p3-quiz-wrong-answers">Incorrect quiz answers: <span id="p3-quiz-numberOfWrongAnswers">0</span></p>
+        <button class="p3-quiz-buttons" id="p3-final-button">
+          <a href="results.html">I'm ready!</a>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="game-fixed-bar-bottom">
+    <p class="locationDisplayBottomBar">SAFE stay at the destination</p>
+    <button class="bottomBarBackButton">
+      <a href="main-menu.html">← Go back</a>
+    </button>
+    <p class="pointsDisplayAndText"><span id="pointsDisplayedInBottomBar"></span> points</p>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
+

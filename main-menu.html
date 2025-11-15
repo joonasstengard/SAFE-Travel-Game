@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAFE Travel Game – Main Menu</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- Top fixed bar -->
+  <div class="game-fixed-bar">
+    <img id="avatarInBar" src="" alt="image" />
+    <span id="playerNameInBar">Player name.</span>
+    <img id="souvenir0InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/06/seashell.png" alt="image" />
+    <img id="souvenir1InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/souvenir1ball.png"
+      alt="image" />
+    <img id="souvenir2InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/sculpture-gda93a00ff_1280.png"
+      alt="image" />
+    <img id="souvenir3InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/beach-ball-g626ca7563_640.png"
+      alt="image" />
+    <img id="souvenir4InBar"
+      src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/mug-for-tea-gbd2ec252a_1280.png" alt="image" />
+    <img id="souvenir5InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/rose-gbf389d9a7_640.png"
+      alt="image" />
+    <img id="souvenir6InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/vhs-gfb4e9d4cf_640.png"
+      alt="image" />
+    <img id="souvenir7InBar" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/teddy-g1e33543ef_640.png"
+      alt="image" />
+  </div>
+
+  <!-- Main menu content -->
+  <div id="gameStartContentDiv">
+    <div id="gameStartUpperTextsRect">
+      <p style="font-size:24px; margin-bottom:30px; margin-top:20px;">
+        Welcome to the
+        <img src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/06/safelogotextonly.png" alt="SAFE" style="height:25px;" />
+        Travel Game, <span id="usernameInsideText"></span>!
+      </p>
+
+      <p>
+        To progress in the game you have to complete tasks inside all of the following three phases of the game:
+        <strong>Preparing for a SAFE travel</strong>,
+        <strong>From home to destination SAFEly</strong> and
+        <strong>SAFE stay at the destination</strong>.
+        The next phase will open for access once the previous one has been completed.
+      </p>
+
+      <p>
+        You will collect points while progressing in the game and learning how to become a SAFE traveller.
+        You may also collect souvenirs on your journey, which grant extra points.
+        <span id="souvenirIntroTextHide">Look, there's one souvenir here! Try collecting it.</span>
+        <img id="souvenir0" src="https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/06/seashell.png" alt="souvenir"
+          onclick="collectSouvenir(0)" />
+      </p>
+    </div>
+
+    <!-- Phase 1 -->
+    <div class="phase-elements-rectangle">
+      <div class="phase-elements-content">
+        <h5 class="phase-elements-title">Preparing for a SAFE travel</h5>
+        <p class="phase-elements-text">
+          Preparation is the first step on a successful journey! The first phase of the game will guide you through the
+          process.
+          Complete all five steps inside to proceed to the next phase.
+        </p>
+        <p class="phase-elements-text"><b><span id="phase1HowManyChaptersOpenedText">0 / 5 Completed</span></b></p>
+        <button class="phase-elements-button" id="startP1Button">
+          <a href="phase1.html">Start Phase 1</a>
+        </button>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="phase-elements-rectangle">
+      <div class="phase-elements-content">
+        <h5 class="phase-elements-title">From home to destination SAFEly</h5>
+        <p class="phase-elements-text">
+          This phase will guide you through the process of getting to the travel destination!
+          Complete all seven steps inside the second phase of the game to proceed to the last one.
+        </p>
+        <p class="phase-elements-text"><b><span id="phase2HowManyChaptersOpenedText">0 / 7 Completed</span></b></p>
+        <button class="phase-elements-button" id="startP2Button">
+          <a href="phase2.html">Start Phase 2</a>
+        </button>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="phase-elements-rectangle">
+      <div class="phase-elements-content">
+        <h5 class="phase-elements-title">SAFE stay at the destination</h5>
+        <p class="phase-elements-text">
+          In the last phase of the game you will arrive at the target destination and learn the final steps to a SAFE
+          journey!
+          Complete all 8 steps to see your final score.
+        </p>
+        <p class="phase-elements-text"><b><span id="phase3HowManyChaptersOpenedText">0 / 8 Completed</span></b></p>
+        <button class="phase-elements-button" id="startP3Button">
+          <a href="phase3.html">Start Phase 3</a>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom fixed bar -->
+  <div class="game-fixed-bar-bottom">
+    <p class="locationDisplayBottomBar">Main menu</p>
+    <p class="pointsDisplayAndText"><span id="pointsDisplayedInBottomBar">0</span> points</p>
+  </div>
+
+  <!-- External JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+
+</html>
