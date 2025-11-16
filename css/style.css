@@ -717,6 +717,21 @@ body > div:not(.game-fixed-bar):not(.game-fixed-bar-bottom) {
   color: var(--bg-white);
 }
 
+/* Override quiz button styles for close button */
+#phase3-popup-close-button {
+  width: 30px !important;
+  height: 30px !important;
+  max-width: 30px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 #p3-quiz-correct-answers,
 #p3-quiz-wrong-answers {
   display: none;
