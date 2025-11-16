@@ -1,811 +1,941 @@
+/* ============================================
+   CSS Variables & Reset
+   ============================================ */
 
-/*---------------------*/
-/* CSS for TRAVEL GAME */
-/*---------------------*/
-
-.travelGameStartGameButton{
-	position:absolute;
-	left: 34px;
-	bottom: 60px;
-	padding: 8px 16px;
-  font-size: 20px;
-	font-weight: bold;
-  background-color: white;
-  color:#8BAB3E;
-  border: 3px solid #8BAB3E;
-  border-radius: 8px;
-  cursor: pointer;
+:root {
+  --primary-color: #4CAF50;
+  --primary-dark: #45a049;
+  --secondary-color: #8BAB3E;
+  --text-color: #333;
+  --text-light: #555;
+  --bg-white: #ffffff;
+  --bg-overlay: rgba(255, 255, 255, 0.92);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
+  --border-radius: 8px;
+  --border-radius-lg: 16px;
+  --spacing-xs: 0.3rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --bar-height: 80px;
+  --bar-height-mobile: 70px;
 }
 
-/*Passport stuff*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   Typography
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-sm);
+}
+
+h1 { font-size: clamp(1.5rem, 4vw, 2rem); }
+h4 { font-size: clamp(1.1rem, 2.5vw, 1.3rem); }
+h5 { font-size: clamp(1rem, 2vw, 1.1rem); }
+
+p {
+  margin-bottom: var(--spacing-sm);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  margin-left: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ============================================
+   Fixed Top & Bottom Bars
+   ============================================ */
+
+.game-fixed-bar,
+.game-fixed-bar-bottom {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: var(--primary-color);
+  color: var(--bg-white);
+  padding: var(--spacing-sm) var(--spacing-md);
+  position: relative;
+  z-index: 100;
+  flex-shrink: 0;
+}
+
+.game-fixed-bar {
+  height: var(--bar-height);
+  border-bottom: 2px solid var(--primary-dark);
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  justify-content: flex-start;
+}
+
+.game-fixed-bar-bottom {
+  height: var(--bar-height);
+  border-top: 2px solid var(--primary-dark);
+  margin-top: auto;
+  justify-content: space-between;
+  position: relative;
+}
+
+#avatarInBar {
+  width: 50px;
+  height: 50px;
+  margin-right: var(--spacing-sm);
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+#playerNameInBar {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-weight: 500;
+  margin-right: var(--spacing-md);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Souvenirs in top bar */
+[id^="souvenir"][id$="InBar"] {
+  width: 30px;
+  object-fit: contain;
+  display: none;
+  margin-left: var(--spacing-xs);
+  flex-shrink: 0;
+}
+
+/* Group souvenirs together on the right */
+#souvenir0InBar ~ [id^="souvenir"][id$="InBar"] {
+  margin-left: var(--spacing-xs);
+}
+
+/* Push souvenirs to the right */
+#souvenir0InBar {
+  margin-left: auto;
+}
+
+.locationDisplayBottomBar {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+}
+
+.pointsDisplayAndText {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+/* ============================================
+   Main Content Area
+   ============================================ */
+
+/* Main content wrapper - ensures proper spacing */
+body > div:not(.game-fixed-bar):not(.game-fixed-bar-bottom) {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--bar-height) * 2);
+  padding: var(--spacing-md) 0;
+  overflow-y: auto;
+}
+
+/* ============================================
+   Passport Component
+   ============================================ */
+
 .passport-container {
   position: relative;
-  width: 520px;
-  height: 370px;
-  padding: 30px;
-  background-color: white;
-	border-radius: 16px;
-	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  max-width: 600px;
+  width: 100%;
+  margin: var(--spacing-lg) auto;
+  padding: var(--spacing-lg);
+  background-color: var(--bg-white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.passport-photo {
+  text-align: center;
+  margin-bottom: var(--spacing-md);
 }
 
 .passport-photo img {
   width: 150px;
   height: 150px;
   object-fit: cover;
-}
-
-.passport-info {
-  position: absolute;
-  top: 10px;
-  left: 250px;
-}
-
-.passport-info h1 {
-  margin: 0;
-  font-size: 26px;
-}
-
-.passport-name-field {
-  margin-top: 10px;
-	font-family: "Lato", sans-serif;
-  color: #555;
-  font-size: 18px;
-	width: 200px;
-}
-
-.passport-name-field label {
-  display: block;
-  margin-bottom: 0px;
-  font-weight: bold;
-}
-
-.passport-name-field input {
-  width: 100%;
-  padding: 8px;
-}
-
-.passport-logo {
-  position: absolute;
-  bottom: 2px;
-  right: 70px;
-}
-
-.passport-logo img {
-  width: 200px;
-  height: 200px;
-  object-fit: contain;
+  border-radius: var(--border-radius);
 }
 
 .passport-arrow-buttons {
   display: flex;
-  margin-top: 5px;
-	margin-left: 23px;
-	font-weight:bold;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
 }
 
 .passport-arrow-button-left,
 .passport-arrow-button-right {
   width: 40px;
   height: 40px;
-  font-size: 30px;
-  background-color: white;
-  border: none;
+  font-size: 1.5rem;
+  background-color: var(--bg-white);
+  border: 2px solid var(--text-light);
+  border-radius: var(--border-radius);
   cursor: pointer;
-	font-family: "Lato", sans-serif;
-  color: #555;
-	font-weight: bold;
-	margin-left: 5px;
-	margin-right: 5px;
-	
+  color: var(--text-color);
+  font-weight: bold;
+  transition: all 0.2s;
 }
 
 .passport-arrow-button-left:hover,
 .passport-arrow-button-right:hover {
-  background-color: #ddd;
-}
-/*--------------------------*/
-/*game bar*/
-/*--------------------------*/
-.game-fixed-bar {
-	display: flex;
-  align-items: center;
-  width: 100%;
-  background-color: #4CAF50;
-  color: #fff;
-	height: 100px;
-  padding: 10px;
-	/*margin-bottom: 10px;*/
-	border-top-left-radius:8px;
-	border-top-right-radius:8px;
-}
-#avatarInBar{
-	width: 70px;
-  height: 70px;
-	margin-right: 15px;
-	margin-left: 10px;
-}
-#playerNameInBar{
-	position: relative;
-	font-size: 28px;
-	font-family: "Lato", sans-serif;
-}
-/*these are the COLLECTED souvenirs in the game bar. initially not visible, but once collected they are visible*/
-#souvenir0InBar{
-	position: absolute;
-	right: 38px;
-	top: 32px;
-	font-size: 24px;
-	width:60px;
-	display:none;
-}
-#souvenir1InBar{
-	position: absolute;
-	right: 96px;
-	top: 28px;
-	font-size: 24px;
-	width:60px;
-	display:none;
-}
-#souvenir2InBar{
-	position: absolute;
-	right: 154px;
-	top: 25px;
-	font-size: 24px;
-	width:40px;
-	display:none;
-}
-#souvenir3InBar{
-	position: absolute;
-	right: 212px;
-	top: 28px;
-	font-size: 24px;
-	width:40px;
-	display:none;
-}
-#souvenir4InBar{
-	position: absolute;
-	right: 267px;
-	top: 25px;
-	font-size: 24px;
-	width:55px;
-	display:none;
-}
-#souvenir5InBar{
-	position: absolute;
-	right: 328px;
-	top: 28px;
-	font-size: 24px;
-	width:40px;
-	display:none;
-}
-#souvenir6InBar{
-	position: absolute;
-	right: 386px;
-	top: 35px;
-	font-size: 24px;
-	width:45px;
-	display:none;
-}
-#souvenir7InBar{
-	position: absolute;
-	right: 440px;
-	top: 25px;
-	font-size: 24px;
-	width:55px;
-	display:none;
-}
-/*bottom bar*/
-.game-fixed-bar-bottom{
-	display: flex;
-  align-items: center;
-	justify-content: flex-start;
-  width: 100%;
-  background-color: #4CAF50;
-  color: #fff;
-	height: 80px;
-  padding: 10px;
-	/*margin-top: 10px;*/
-	border-bottom-left-radius:8px;
-	border-bottom-right-radius:8px;
+  background-color: #f0f0f0;
+  border-color: var(--primary-color);
 }
 
-.bottomBarBackButton{
-	position:absolute;
-	left:22px;
-	bottom:23px;
-	padding: 6px 12px;
-  font-size: 19px;
-	font-weight: bold;
-  background-color: #fff;
-  color: #4CAF50;
-  border: none;
-  border-radius: 4px;
+.passport-info {
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.passport-info h1 {
+  margin-bottom: var(--spacing-md);
+}
+
+.passport-name-field {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.passport-name-field label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 600;
+}
+
+.passport-name-field input {
+  width: 100%;
+  padding: var(--spacing-xs);
+  border: 2px solid #ddd;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.passport-name-field input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.passport-logo {
+  text-align: center;
+  margin-top: var(--spacing-md);
+}
+
+.passport-logo img {
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+}
+
+.travelGameStartGameButton {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: var(--spacing-lg) auto 0;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: var(--bg-white);
+  color: var(--secondary-color);
+  border: 3px solid var(--secondary-color);
+  border-radius: var(--border-radius);
   cursor: pointer;
-	transition: 0.2s;
-}
-.bottomBarBackButton a{
-	text-decoration:none;
-	color:#4CAF50;
-}
-.bottomBarBackButton:hover{
-	box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+  transition: all 0.2s;
 }
 
-/*displays the page title to the user in the bottom bar, like "Main menu"*/
-.locationDisplayBottomBar{
-	font-size: 24px;
-	color:white;
-	font-family: "Lato", sans-serif;
-	margin-left: auto; 
-  margin-right: auto;
+.travelGameStartGameButton:hover {
+  background-color: var(--secondary-color);
+  color: var(--bg-white);
 }
 
-.pointsDisplayAndText{
-	position: absolute;
-  bottom: 17px;
-  right: 80px;
-	font-size: 24px;
-	
-	color:white;
-	font-family: "Lato", sans-serif;
+/* ============================================
+   Main Menu & Game Start
+   ============================================ */
+
+#gameStartContentDiv {
+  background-image: url('https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/nature-g551aa179b_1920.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100%;
+  padding: var(--spacing-lg);
 }
 
-/*--------------------------*/
-/*SOUVENIRS IN THE OVERWORLD*/
-/*--------------------------*/
-#souvenir0{
-	width:65px;
-	
-	animation: bounce 0.7s infinite alternate;
-	cursor:pointer;
+#gameStartUpperTextsRect {
+  max-width: 900px;
+  width: 100%;
+  margin: var(--spacing-lg) auto;
+  padding: var(--spacing-lg);
+  text-align: center;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--bg-overlay);
 }
-/*golden football in p1*/
-#souvenir1{
-	width:65px;
-	position: absolute;
-  bottom: 10%;
-  right: 7%;
-	animation: bounce 0.6s infinite alternate;
-	cursor:pointer;
-}
-/*statue in p1 overview*/
-#souvenir2{
-	width:40px;
-	position: absolute;
-  bottom: 12%;
-  left: 7%;
-	cursor:pointer;
-}
-/*beach ball in p1 c3*/
-#souvenir3{
-	width:36px;
-	position: absolute;
-  bottom: 17%;
-  right: 11%;
-	cursor:pointer;
-	animation: bounce 0.6s infinite alternate;
-}
-/*colored mug in p2*/
-#souvenir4{
-	width:70px;
-	position: absolute;
-  bottom: 38%;
-  right: 13%;
-	cursor:pointer;
-}
-/*rose in p2*/
-#souvenir5{
-	width:50px;
-	position: absolute;
-  bottom: 41%;
-  left: 48%;
-	cursor:pointer;
-}
-/*vhs in p3*/
-#souvenir6{
-	width:60px;
-	position: absolute;
-  bottom: 25%;
-  right: 20%;
-	cursor:pointer;
-}
-/*hidden teddy. have to check p1c5 twice before it appears.*/
-#souvenir7{
-	width:60px;
-	position: absolute;
-  bottom: 150px;
-  right: 90px;
-	cursor:pointer;
-	animation: bounce 0.8s infinite alternate;
-	display:none;
-}
-/*bounce animation for souvenirs in overworld*/
-@keyframes bounce {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-6px);
-  }
-}
-
-/* phase 1, 2, 3 rectangles overview elements in game start*/
 
 .phase-elements-content {
-  height: 320px; 
-
-	text-align:center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  height: 100%;
+  padding: var(--spacing-md);
 }
 
 .phase-elements-rectangle {
-	width: calc(33.0% - 18px); /* Adjust the width as needed */
-  height: 320px;
-  padding: 20px;
-  margin-right: 9px;
-  margin-left: 9px;
-  margin-top: 25px;
-  margin-bottom: 40px;
-  display: inline-block;
-  border-radius: 8px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  background-color: rgba(255,255,255, 0.92);
+  width: 100%;
+  max-width: 400px;
+  margin: var(--spacing-md) auto;
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  background-color: var(--bg-overlay);
+  display: flex;
+  flex-direction: column;
 }
 
 .phase-elements-title {
-  font-size: 24px;
-  margin-top: 0;
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  margin-bottom: var(--spacing-sm);
 }
 
 .phase-elements-text {
-  margin-bottom: 5px;
-  color: #555;
+  color: var(--text-light);
+  margin-bottom: var(--spacing-sm);
+  flex: 1;
 }
 
 .phase-elements-button {
-	margin-top: 15px;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #4CAF50;
-  color: #fff;
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: 1rem;
+  background-color: var(--primary-color);
+  color: var(--bg-white);
   border: none;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   cursor: pointer;
-
-	
-}
-
-.phase-elements-button a {
-  color: #fff;
-  text-decoration: none;
+  transition: all 0.2s;
+  font-weight: 500;
 }
 
 .phase-elements-button:hover {
-  background-color: #45a049;
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
-/*initially disabled, until phase 1 completed*/
-
-#startP1Button{
-	display:block;
-}
-#startP2Button{
-	display:none;
+.phase-elements-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
-#startP3Button{
-	display:none;
-}
+/* ============================================
+   Phase 1 Chapters
+   ============================================ */
 
-#gameStartContentDiv{
-	text-align: center;
-	background-image: url('https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/nature-g551aa179b_1920.jpg');
-}
-#gameStartUpperTextsRect{
-	display:inline-block; 
-	margin-top:20px;
-	width: 800px;
-	padding-top: 15px; 
-	padding-bottom:20px; 
-	padding-left:80px; 
-	padding-right:80px; 
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  border-radius: 8px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  background-color: rgba(255,255,255, 0.92);
-}
-
-
-
-/*Inside phase 1, and maybe other phases in the future.
-In other words, the PHASE 1 MENU*/
-
-.phase1ChaptersDiv{
-	/*margin:auto;
-	width:98%;*/
-	height:700px;
-	background-image: url('https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/phase1background.jpg');
-	padding:20px;
-	/*outline: yellow solid 10px;*/
-}
-
-.chapters-inside-phase{
-	margin-bottom: 20px;
-	margin-left:auto;
-	margin-right:auto;
-	
-  padding: 18px;
-	border-radius: 80px;
-	width: 570px;
-	height: 115px;
-	background:rgba(255,255,255, 0.83);
-	position: relative;
-	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-}
-
-/*titles of p1 chapters*/
-.phase1Titles{
-	text-align:center;
-}
-
-/*these texts show 0/5 completed etc*/
-.p1ChaptersCompletedText{
-	font-size: 16px;
-	font-family: "Lato", sans-serif;
-	position: absolute;
-  right: 70px;
-  top: 43%;
-	font-weight:bold;
-}
-
-/*these aren't arrows anymore... they are the "next step" text inside phase 1*/
-.chapters-phase-arrow {
-	visibility:hidden;
-	font-size: 16px;
-	font-family: "Lato", sans-serif;
- position: absolute;
-  left: 70px;
-  top: 63%;
-  transform: translateY(-50%);
-  color: green;
-  animation: chaptersArrowAnimation 5.2s infinite;
-}
-
-@keyframes chaptersArrowAnimation {
-  0% {
-    transform: translateY(-50%) scale(1);
-  }
-  50% {
-    transform: translateY(-50%) scale(1.2);
-  }
-  100% {
-    transform: translateY(-50%) scale(1);
-  }
-}
-
-.phase-menu-button-container{
-	display: flex;
-  align-items: center;
-}
-
-.phase-menu-button-container button{
-	position:absolute;
-	top:37%;
-	left:44.5%;
-  
-	margin-top: 15px;
-  padding: 8px 16px;
-  font-size: 16px;
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-.phase-menu-button-container button:hover{
-  background-color: #45a049;
-}
-.phase-menu-button-container button a{
-	text-decoration:none;
-	color:white;
-}
-
-.phase1-5images-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.phase1-5images-imagediv {
-  flex: 0 0 calc(20% - 10px);
-  box-sizing: border-box;
-  padding: 0;
-  margin: 5px;
-  text-align: center;
+.phase1ChaptersDiv {
+  background-image: url('https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/phase1background.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100%;
+  padding: var(--spacing-lg);
   position: relative;
 }
 
-.phase1-5images-imagediv img {
-  display: block;
-  margin: 0 auto;
-  border-style: outset;
-  border-width: 6px;
-  cursor: pointer;
+.chapters-inside-phase {
+  max-width: 700px;
   width: 100%;
+  margin: var(--spacing-md) auto;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: 50px;
+  background: var(--bg-overlay);
+  position: relative;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.phase1Titles {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  margin-bottom: var(--spacing-sm);
+}
+
+.phase-menu-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  width: 100%;
+  margin-top: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.phase-menu-button-container button {
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: 1rem;
+  background-color: var(--primary-color);
+  color: var(--bg-white);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.phase-menu-button-container button:hover {
+  background-color: var(--primary-dark);
+}
+
+.p1ChaptersCompletedText {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.chapters-phase-arrow {
+  visibility: hidden;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  font-weight: bold;
+  margin-top: var(--spacing-xs);
+}
+
+/* ============================================
+   Phase 1 Chapter Content
+   ============================================ */
+
+[id^="p1c"][id$="BackgroundImageDiv"] {
+  background-size: cover;
+  background-position: center;
+  min-height: 100%;
+  padding: var(--spacing-lg);
+}
+
+.phase1-5images-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--spacing-md);
+  max-width: 1200px;
+  margin: 0 auto var(--spacing-lg);
+}
+
+.phase1-5images-imagediv {
+  text-align: center;
+}
+
+.phase1-5images-imagediv img {
+  width: 100%;
+  max-width: 150px;
   height: auto;
+  border: 4px solid #ddd;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: var(--spacing-xs);
+}
+
+.phase1-5images-imagediv img:hover {
+  border-color: var(--primary-color);
+  transform: scale(1.05);
 }
 
 .phase1-5images-imagediv h5 {
+  font-size: 0.9rem;
   margin: 0;
 }
 
-.phase1-5images-imagediv img:hover{
-  border-color:gray;
+.phase1-content-box {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  background-color: var(--bg-overlay);
+  min-height: 300px;
 }
 
-.phase1-5images-imagediv h5 {
-  margin: 0;
-  
+.phase1-content-box h5,
+.phase1-content-box p {
+  margin-left: 0;
+  margin-right: 0;
 }
 
-.phase1-content-box{
-	/*Border can help with developing*/
-	/*border: 1px solid black;*/
-	margin-top:5px;
-	margin-left:50px;
-	margin-right:50px;
-	margin-bottom:20px;
-	height:450px;
-	border-radius: 16px;
-	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-	background-color: rgba(255,255,255, 0.78);
-}
+/* ============================================
+   Phase 2 & 3 Image Grids
+   ============================================ */
 
-.phase1-content-box h5{
-	margin-left: 20px;
-	margin-right: 20px;
-	padding-top:20px;
+[id^="p"][id$="BackgroundImageContainer"] {
+  background-size: cover;
+  background-position: center;
+  min-height: 100%;
+  padding: var(--spacing-lg);
 }
-.phase1-content-box p{
-	margin-left: 20px;
-	margin-right: 20px;
-	margin-top:10px;
-}
-
-#p1c1BackgroundImageDiv{
-	background-image: url("https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/paper-ga6c7f25c1_1920.jpg");
-	padding-bottom:10px;
-}
-#p1c2BackgroundImageDiv{
-	background-image: url("https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/ocean-gcc1963940_1920.jpg");
-	padding-bottom:10px;
-}
-#p1c3BackgroundImageDiv{
-	background-image: url("https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/amazing-gae79c3c9c_1920.jpg");
-	padding-bottom:10px;
-}
-#p1c4BackgroundImageDiv{
-	background-image: url("https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/desert-g06c7a9496_1920.jpg");
-	padding-bottom:10px;
-}
-#p1c5BackgroundImageDiv{
-	background-image: url("https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/korea-ge3076ff89_1920.jpg");
-	padding-bottom:10px;
-}
-
-/*PHASE 2 and 3*/
-/*These things are used in both phase 2 and phase 3 views*/
-/*container around the image grid to center everything, this can be removed np*/
 
 .phase2-grid-container {
-  display: flex;
-  justify-content: center;
-}
-
-#p3BackgroundImageContainer{
-	background-image: url("https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/sea-g2312a86b0_1920.jpg");
-}
-#p2BackgroundImageContainer{
-	background-image: url("https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/passenger-plane-g9b12ba9e3_1920.jpg");
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .phase2-image-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-	margin-left:5%;
-	margin-right:5%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
 }
 
 .phase2-image-grid img {
-  width: 260px;
-  border-style: outset;
-  border-width: 6px;
-  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  border: 4px solid #ddd;
+  border-radius: var(--border-radius);
   cursor: pointer;
+  transition: all 0.2s;
+  aspect-ratio: 4/3;
+  object-fit: cover;
 }
 
-.phase2-image-grid img:hover{
-	border-color:black;
+.phase2-image-grid img:hover {
+  border-color: var(--primary-color);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
 }
 
-/*pop-up window stuff for phase 2 of travel game. same stuff for phase 3 is below these*/
+/* ============================================
+   Souvenirs in Overworld
+   ============================================ */
 
- #phases-popup-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
-    z-index: 9999;
-  }
-
-  #phases-popup-content {
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    max-width: 800px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
-
-  #phases-popup-close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  #phases-popup-close-button:hover{
-    background-color:#f5776c;
-  }
-
-
-
-/*phase 3 popup window and contents. for now these are just copies of phase 2 stuff but with 3 added to name. so make modifications to both.*/
-
- #phases-popup-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
-    z-index: 9999;
-  }
-
-  #phases-popup-content {
-    position: absolute;
-    top: 42%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    max-width: 800px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
-
-
-
-/*phase 3 popup and contents, copy of phase 2 ids with 3 in name for now. can turn these into classes later or keep as is for making them different from eachother*/
-
- #phase3-popup-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
-    z-index: 9999;
-  }
-
-  #phase3-popup-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    max-width: 800px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
-
-  #phase3-popup-close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-#phase3-popup-close-button:hover {
-    background-color:#f5776c
-  }
-
-
-/* phase 3 quiz travel game*/
-
-.p3-quiz-buttons{
-	padding: 4px 10px;
-  font-size: 16px;
-	font-weight: bold;
-  background-color: white;
-  color:#8BAB3E;
-  border: 2px solid #8BAB3E;
-  border-radius: 8px;
+[id^="souvenir"][id$=""]:not([id$="InBar"]) {
+  width: 60px;
+  height: auto;
   cursor: pointer;
-}
-.p3-quiz-buttons:hover{
-	color:gray;
-}
-
-#p3-quiz-correct-answers{
-	display:none;
+  position: absolute;
+  z-index: 10;
+  transition: transform 0.2s;
 }
 
-#p3-quiz-wrong-answers{
-	display:none;
+[id^="souvenir"][id$=""]:not([id$="InBar"]):hover {
+  transform: scale(1.1);
 }
 
-#p3-final-button{
-	display:none;
-	margin:auto;
-	font-size: 24px;
-	margin-bottom: 50px;
+#souvenir0 {
+  bottom: 10%;
+  right: 5%;
+  animation: bounce 0.7s infinite alternate;
+  width: 50px;
 }
+
+#souvenir1 {
+  bottom: 10%;
+  right: 7%;
+  animation: bounce 0.6s infinite alternate;
+  width: 50px;
+}
+
+#souvenir2 {
+  width: 50px;
+  bottom: 12%;
+  left: 7%;
+}
+
+#souvenir3 {
+  width: 36px;
+  bottom: 17%;
+  right: 11%;
+  animation: bounce 0.6s infinite alternate;
+}
+
+#souvenir4 {
+  width: 70px;
+  bottom: 38%;
+  right: 13%;
+}
+
+#souvenir5 {
+  width: 50px;
+  bottom: 41%;
+  left: 48%;
+}
+
+#souvenir6 {
+  width: 60px;
+  bottom: 25%;
+  right: 20%;
+}
+
+#souvenir7 {
+  width: 60px;
+  bottom: 150px;
+  right: 90px;
+  animation: bounce 0.8s infinite alternate;
+  display: none;
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-6px); }
+}
+
+/* ============================================
+   Popup Windows
+   ============================================ */
+
+[id$="-popup-container"] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+}
+
+[id$="-popup-content"] {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: var(--bg-white);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+[id$="-popup-close-button"] {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[id$="-popup-close-button"]:hover {
+  background-color: #f5776c;
+  color: var(--bg-white);
+}
+
+/* ============================================
+   Phase 3 Quiz
+   ============================================ */
+
+.p3-quiz-buttons {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: var(--spacing-xs) auto;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: var(--bg-white);
+  color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.p3-quiz-buttons:hover {
+  background-color: var(--secondary-color);
+  color: var(--bg-white);
+}
+
+#p3-quiz-correct-answers,
+#p3-quiz-wrong-answers {
+  display: none;
+  margin-top: var(--spacing-md);
+  text-align: center;
+}
+
+#p3-final-button {
+  display: none;
+  margin: var(--spacing-lg) auto;
+  font-size: 1.2rem;
+}
+
+/* ============================================
+   Results Page
+   ============================================ */
 
 #backgroundImageDivResultsPage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url('https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/maldives-g15ea9d3db_1920.jpg');
-    background-size: cover;
-    background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  background-image: url('https://eusafe.fa.uni-lj.si/wp-content/uploads/2023/07/maldives-g15ea9d3db_1920.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: var(--spacing-lg);
+}
+
+#resultsPageCenterEverything {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--bg-overlay);
+}
+
+/* ============================================
+   Bottom Bar Button
+   ============================================ */
+
+.bottomBarBackButton {
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  font-weight: bold;
+  background-color: var(--bg-white);
+  color: var(--primary-color);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  order: -1;
+}
+
+.bottomBarBackButton:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.bottomBarBackButton a {
+  color: var(--primary-color);
+}
+
+/* ============================================
+   Button Links
+   ============================================ */
+
+.button-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Lato", sans-serif;
+  border-radius: var(--border-radius);
+  color: var(--text-color);
+  text-decoration: none;
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: 1rem;
+  border: 2px solid transparent;
+  background-color: var(--bg-white);
+  transition: all 0.3s;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: rgba(139, 171, 62, 0.2) 0px 2px 8px 0px;
+  font-weight: 500;
+  margin: var(--spacing-sm) 0;
+  min-height: 80px;
+}
+
+.button-link:hover {
+  border: 2px solid var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ============================================
+   Responsive Design - Mobile
+   ============================================ */
+
+@media (max-width: 768px) {
+  :root {
+    --bar-height: var(--bar-height-mobile);
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
   }
 
 
+  .game-fixed-bar,
+  .game-fixed-bar-bottom {
+    height: var(--bar-height-mobile);
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
 
+  #avatarInBar {
+    width: 40px;
+    height: 40px;
+  }
 
-.button-link {
-		display: block;
-		font-family: "Lato", sans-serif;
-		border-radius: 10px;
-		line-height: 1.2;
-		color: #555;
-		text-decoration: none;
-		padding: 12px 20px;
-		font-size: 15px;
-		border: 2px solid transparent;
-		background-color: white;
-		transition: all 0.5s;
-		cursor: pointer;
-		text-align: center;
-		box-shadow: rgba(139, 171, 62, 0.2) 0px 2px 8px 0px;
-		font-weight: 500;
-		position: relative;
-		padding: 24px;
-    margin: 12px 0;
-		min-height: 124px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-	
-	&:hover {
-		    border: 2px solid #8BAB3E;
-	}
+  #playerNameInBar {
+    font-size: 0.9rem;
+    margin-right: var(--spacing-xs);
+  }
+
+  [id^="souvenir"][id$="InBar"] {
+    width: 30px;
+    height: 30px;
+  }
+
+  .passport-container {
+    margin: var(--spacing-md) var(--spacing-sm);
+    padding: var(--spacing-md);
+  }
+
+  .passport-photo img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .passport-logo img {
+    width: 120px;
+  }
+
+  .phase-elements-rectangle {
+    margin: var(--spacing-sm) auto;
+    padding: var(--spacing-md);
+  }
+
+  .chapters-inside-phase {
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-lg);
+  }
+
+  .phase1-5images-container {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: var(--spacing-sm);
+  }
+
+  .phase2-image-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--spacing-sm);
+  }
+
+  .phase-menu-button-container {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .locationDisplayBottomBar {
+    font-size: 0.85rem;
+    max-width: 200px;
+  }
+
+  .pointsDisplayAndText {
+    font-size: 0.8rem;
+    margin-left: var(--spacing-xs);
+  }
+
+  .bottomBarBackButton {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.8rem;
+  }
+
+  [id^="souvenir"][id$=""]:not([id$="InBar"]) {
+    width: 40px;
+  }
+
+  #souvenir4 {
+    width: 50px;
+  }
+
+  #souvenir7 {
+    width: 40px;
+    bottom: 100px;
+    right: 20px;
+  }
 }
+
+@media (max-width: 480px) {
+  #gameStartContentDiv,
+  .phase1ChaptersDiv,
+  [id^="p1c"][id$="BackgroundImageDiv"],
+  [id^="p"][id$="BackgroundImageContainer"] {
+    padding: var(--spacing-sm);
+  }
+
+  #gameStartUpperTextsRect {
+    padding: var(--spacing-md);
+  }
+
+  .phase1-5images-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .phase2-image-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .phase1-content-box {
+    padding: var(--spacing-md);
+    min-height: 200px;
+  }
+
+  [id$="-popup-content"] {
+    padding: var(--spacing-md);
+    max-height: 85vh;
+  }
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+
+.text-center {
+  text-align: center;
+}
+
+.mt-1 { margin-top: var(--spacing-xs); }
+.mt-2 { margin-top: var(--spacing-sm); }
+.mt-3 { margin-top: var(--spacing-md); }
+.mb-1 { margin-bottom: var(--spacing-xs); }
+.mb-2 { margin-bottom: var(--spacing-sm); }
+.mb-3 { margin-bottom: var(--spacing-md); }

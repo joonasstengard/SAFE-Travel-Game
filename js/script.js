@@ -863,7 +863,7 @@ if(document.getElementById("p1c1button") != null){
   document.getElementById("howManyp1c4Completed").innerHTML = parseInt(localStorage.HasP1C4img1beenOpened) + parseInt(localStorage.HasP1C4img2beenOpened) + parseInt(localStorage.HasP1C4img3beenOpened); 
   
   //p1c5
-  document.getElementById("howManyp1c5Completed").innerHTML = parseInt(localStorage.HasP1C5img1beenOpened) + parseInt(localStorage.HasP1C5img2beenOpened) + parseInt(localStorage.HasP1C5img3beenOpened); //asd
+  document.getElementById("howManyp1c5Completed").innerHTML = parseInt(localStorage.HasP1C5img1beenOpened) + parseInt(localStorage.HasP1C5img2beenOpened) + parseInt(localStorage.HasP1C5img3beenOpened) + parseInt(localStorage.HasP1C5img4beenOpened) + parseInt(localStorage.HasP1C5img5beenOpened);
   
   //0 == false, 1 == true
   if(localStorage.storageHasP1C1BeenOpened == 0){
